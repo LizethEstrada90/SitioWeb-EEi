@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert Engineers | Migración y Renovación Tecnológica Enterprise</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Expert Engineers | Enterprise IT Migration & Legacy Modernization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,49 +13,99 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #3b82f6;
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #f8fafc;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --primary: #0066ff;
+            --secondary: #00d4ff;
+            --accent: #7c3aed;
+            --dark: #0a0e1a;
+            --darker: #050711;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --gradient-primary: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+            --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #0066ff 100%);
+            --gradient-mesh: radial-gradient(at 0% 0%, rgba(0, 102, 255, 0.2) 0px, transparent 50%),
+                             radial-gradient(at 100% 0%, rgba(124, 58, 237, 0.2) 0px, transparent 50%),
+                             radial-gradient(at 100% 100%, rgba(0, 212, 255, 0.2) 0px, transparent 50%),
+                             radial-gradient(at 0% 100%, rgba(0, 102, 255, 0.2) 0px, transparent 50%);
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--dark);
+            color: var(--text-primary);
             background: var(--darker);
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Navbar Premium */
+        /* Advanced Background Effects */
+        .mesh-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-mesh);
+            z-index: -2;
+            animation: meshMove 20s ease-in-out infinite;
+        }
+
+        @keyframes meshMove {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.6; }
+        }
+
+        .noise-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Premium Navbar */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 0.8rem 0;
+            z-index: 9999;
+            padding: 1.2rem 0;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .navbar.scrolled {
-            background: rgba(2, 6, 23, 0.98);
+            background: rgba(5, 7, 17, 0.95);
             backdrop-filter: blur(24px) saturate(180%);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+            border-bottom: 1px solid var(--border-color);
             padding: 0.8rem 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 10000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 10001;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo-img {
@@ -70,35 +120,50 @@
             height: 55px;
         }
 
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
         .nav-menu {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             list-style: none;
             align-items: center;
+            position: relative;
+            z-index: 10001;
         }
 
         .nav-menu a {
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             transition: all 0.3s;
             position: relative;
+            padding: 0.5rem 0;
+            z-index: 10001;
+            cursor: pointer;
         }
 
         .nav-menu a:hover {
-            color: white;
+            color: var(--text-primary);
         }
 
         .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient-2);
-            transition: width 0.3s;
+            background: var(--gradient-primary);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-menu a:hover::after {
@@ -112,12 +177,33 @@
             color: white !important;
             font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.5);
+            box-shadow: 0 4px 200px rgba(37, 99, 235, 0.5);
+        }
+
+        .cta-nav {
+   background: var(--gradient-primary);
+   padding: 1rem 2.5rem; /* ← antes era 2.5rem, ahora más ancho */
+   border-radius: 50px;
+   color: white !important;
+   font-weight: 600;
+   font-size: 1.05rem;
+   transition: all 0.3s;
+   box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
+   position: relative;
+   overflow: hidden;
+   z-index: 10001;
+   cursor: pointer;
+   pointer-events: auto;
+}
+
+
+        .cta-nav:hover::before {
+            left: 100%;
         }
 
         .cta-nav:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(37, 99, 235, 0.7);
+            box-shadow: 0 6px 30px rgba(0, 102, 255, 0.6);
         }
 
         .cta-nav::after {
@@ -127,29 +213,48 @@
         .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
             cursor: pointer;
             z-index: 1001;
         }
 
         .menu-toggle span {
-            width: 28px;
+            width: 30px;
             height: 3px;
             background: white;
             border-radius: 3px;
             transition: all 0.3s;
         }
 
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
+        .menu-close {
+            display: none;
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10002;
         }
 
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
+        .menu-close::before,
+        .menu-close::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: white;
+            top: 50%;
+            left: 50%;
+            transition: all 0.3s;
         }
 
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+        .menu-close::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .menu-close::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
         }
 
         /* Hero Premium */
@@ -158,185 +263,96 @@
             display: flex;
             align-items: center;
             position: relative;
-            background: var(--darker);
             overflow: hidden;
-            padding: 8rem 2rem 4rem;
+            padding: 10rem 3rem 6rem;
         }
 
-        .hero-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-            animation: breathe 8s ease-in-out infinite;
-        }
-
-        @keyframes breathe {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        /* Particles Animation */
-        .particles-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(59, 130, 246, 0.6);
-            border-radius: 50%;
-            animation: float linear infinite;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) translateX(100px);
-                opacity: 0;
-            }
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 20%; animation-duration: 18s; animation-delay: 2s; }
-        .particle:nth-child(3) { left: 30%; animation-duration: 12s; animation-delay: 4s; }
-        .particle:nth-child(4) { left: 40%; animation-duration: 20s; animation-delay: 1s; }
-        .particle:nth-child(5) { left: 50%; animation-duration: 16s; animation-delay: 3s; }
-        .particle:nth-child(6) { left: 60%; animation-duration: 14s; animation-delay: 5s; }
-        .particle:nth-child(7) { left: 70%; animation-duration: 19s; animation-delay: 2s; }
-        .particle:nth-child(8) { left: 80%; animation-duration: 17s; animation-delay: 4s; }
-        .particle:nth-child(9) { left: 90%; animation-duration: 13s; animation-delay: 1s; }
-        .particle:nth-child(10) { left: 15%; animation-duration: 21s; animation-delay: 3s; }
-        .particle:nth-child(11) { left: 25%; animation-duration: 15s; animation-delay: 0s; }
-        .particle:nth-child(12) { left: 35%; animation-duration: 18s; animation-delay: 2s; }
-        .particle:nth-child(13) { left: 45%; animation-duration: 16s; animation-delay: 5s; }
-        .particle:nth-child(14) { left: 55%; animation-duration: 14s; animation-delay: 1s; }
-        .particle:nth-child(15) { left: 65%; animation-duration: 20s; animation-delay: 3s; }
-        .particle:nth-child(16) { left: 75%; animation-duration: 12s; animation-delay: 4s; }
-        .particle:nth-child(17) { left: 85%; animation-duration: 19s; animation-delay: 2s; }
-        .particle:nth-child(18) { left: 95%; animation-duration: 17s; animation-delay: 0s; }
-        .particle:nth-child(19) { left: 5%; animation-duration: 22s; animation-delay: 3s; }
-        .particle:nth-child(20) { left: 48%; animation-duration: 16s; animation-delay: 1s; }
-
-        /* Binary Rain Effect */
-        .binary-rain {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            opacity: 0.03;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            color: #3b82f6;
-            pointer-events: none;
-        }
-
-        .binary-column {
-            position: absolute;
-            top: -100%;
-            animation: rain linear infinite;
-            white-space: nowrap;
-        }
-
-        @keyframes rain {
-            0% {
-                top: -100%;
-            }
-            100% {
-                top: 100%;
-            }
-        }
-
-        .binary-column:nth-child(1) { left: 5%; animation-duration: 20s; animation-delay: 0s; }
-        .binary-column:nth-child(2) { left: 15%; animation-duration: 25s; animation-delay: 3s; }
-        .binary-column:nth-child(3) { left: 25%; animation-duration: 18s; animation-delay: 6s; }
-        .binary-column:nth-child(4) { left: 35%; animation-duration: 22s; animation-delay: 2s; }
-        .binary-column:nth-child(5) { left: 45%; animation-duration: 24s; animation-delay: 8s; }
-        .binary-column:nth-child(6) { left: 55%; animation-duration: 19s; animation-delay: 4s; }
-        .binary-column:nth-child(7) { left: 65%; animation-duration: 21s; animation-delay: 1s; }
-        .binary-column:nth-child(8) { left: 75%; animation-duration: 23s; animation-delay: 5s; }
-        .binary-column:nth-child(9) { left: 85%; animation-duration: 20s; animation-delay: 7s; }
-        .binary-column:nth-child(10) { left: 95%; animation-duration: 26s; animation-delay: 3s; }
-
-        .grid-overlay {
+        .hero-grid-bg {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.02) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.02) 2px, transparent 2px);
-            background-size: 60px 60px;
-            animation: gridSlide 25s linear infinite;
+                linear-gradient(rgba(0, 102, 255, 0.03) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(0, 102, 255, 0.03) 1.5px, transparent 1.5px);
+            background-size: 80px 80px;
+            animation: gridMove 30s linear infinite;
         }
 
-        @keyframes gridSlide {
+        @keyframes gridMove {
             0% { transform: translate(0, 0); }
-            100% { transform: translate(60px, 60px); }
+            100% { transform: translate(80px, 80px); }
         }
 
-        .floating-shapes {
+        .hero-spotlight {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: spotlightMove 15s ease-in-out infinite;
+        }
+
+        .hero-spotlight:nth-child(1) {
+            background: #0066ff;
+            top: -200px;
+            left: -100px;
+        }
+
+        .hero-spotlight:nth-child(2) {
+            background: #7c3aed;
+            bottom: -200px;
+            right: -100px;
+            animation-delay: 5s;
+        }
+
+        @keyframes spotlightMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        .floating-orbs {
             position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
 
-        .shape {
+        .orb {
             position: absolute;
-            background: var(--gradient-2);
-            opacity: 0.03;
             border-radius: 50%;
-            animation: floatShape 20s ease-in-out infinite;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
         }
 
-        .shape:nth-child(1) {
-            width: 400px;
-            height: 400px;
-            top: -10%;
-            left: -10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
+        .orb:nth-child(1) {
             width: 300px;
             height: 300px;
-            top: 50%;
-            right: -5%;
-            animation-delay: 3s;
+            top: 10%;
+            left: 10%;
+            animation-duration: 25s;
         }
 
-        .shape:nth-child(3) {
+        .orb:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+
+        .orb:nth-child(3) {
             width: 250px;
             height: 250px;
-            bottom: -5%;
-            left: 30%;
-            animation-delay: 6s;
+            bottom: 10%;
+            left: 50%;
+            animation-duration: 35s;
+            animation-delay: 10s;
         }
 
-        @keyframes floatShape {
+        @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
             33% { transform: translate(30px, -30px) rotate(120deg); }
             66% { transform: translate(-20px, 20px) rotate(240deg); }
@@ -353,78 +369,86 @@
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid rgba(37, 99, 235, 0.3);
-            padding: 0.6rem 1.4rem;
+            gap: 0.8rem;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            padding: 0.7rem 1.6rem;
             border-radius: 50px;
-            color: #93c5fd;
+            color: #60a5fa;
             font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             backdrop-filter: blur(10px);
             animation: fadeInUp 0.8s ease-out;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.2);
         }
 
-        .pulse-dot {
-            width: 10px;
-            height: 10px;
+        .status-indicator {
+            width: 8px;
+            height: 8px;
             background: #22c55e;
             border-radius: 50%;
             position: relative;
+            animation: pulse-ring 2s ease-out infinite;
         }
 
-        .pulse-dot::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            background: #22c55e;
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.5); opacity: 0; }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-size: clamp(3rem, 8vw, 6.5rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+            line-height: 1.05;
+            margin-bottom: 2rem;
             color: white;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
             animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         .gradient-text {
-            background: var(--gradient-2);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             background-size: 200% auto;
-            animation: shimmer 4s linear infinite;
+            animation: shimmer 3s linear infinite;
             display: inline-block;
+            position: relative;
+        }
+
+        .gradient-text::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: blur(20px);
+            opacity: 0.5;
         }
 
         @keyframes shimmer {
             to { background-position: 200% center; }
         }
 
-        .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.35rem);
-            color: rgba(255, 255, 255, 0.75);
-            max-width: 650px;
-            margin-bottom: 3rem;
-            line-height: 1.8;
+        .hero .lead-text {
+            font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 3.5rem;
+            line-height: 1.7;
             animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
             animation: fadeInUp 0.8s ease-out 0.6s both;
         }
@@ -432,7 +456,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -441,111 +465,165 @@
         }
 
         .btn {
-            padding: 1.1rem 2.5rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.05rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.8rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            border: 2px solid transparent;
         }
 
         .btn-primary {
-            background: var(--gradient-2);
+            background: var(--gradient-primary);
             color: white;
-            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.4);
         }
 
         .btn-primary::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.6);
+            box-shadow: 0 16px 50px rgba(0, 102, 255, 0.6);
         }
 
         .btn-primary:hover::before {
-            opacity: 1;
+            left: 100%;
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
             color: white;
-            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(0, 102, 255, 0.5);
             transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.3);
         }
 
-        /* About Section */
-        .about {
-            padding: 8rem 2rem;
-            background: var(--dark);
+        .btn svg {
+            transition: transform 0.3s;
+        }
+
+        .btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Trust Indicators */
+        .trust-bar {
+            position: absolute;
+            bottom: 4rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .trust-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #60a5fa;
+        }
+
+        /* Section Base Styles */
+        section {
+            padding: 8rem 3rem;
             position: relative;
         }
 
         .section-header {
-            max-width: 800px;
-            margin: 0 auto 5rem;
+            max-width: 900px;
+            margin: 0 auto 6rem;
             text-align: center;
         }
 
         .section-label {
-            color: #93c5fd;
+            color: #60a5fa;
             font-weight: 700;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(37, 99, 235, 0.1);
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 102, 255, 0.1);
             border-radius: 50px;
+            border: 1px solid rgba(0, 102, 255, 0.2);
         }
 
         .section-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
             color: white;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1.5px;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            line-height: 1.1;
         }
 
         .section-desc {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: rgba(255, 255, 255, 0.65);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-secondary);
             line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .about-container {
+        /* Premium Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 5rem;
-        }
-
-        .about-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .premium-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 3rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -554,126 +632,66 @@
             overflow: hidden;
         }
 
-        .about-card::before {
+        .premium-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: var(--gradient-2);
+            height: 3px;
+            background: var(--gradient-primary);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s;
         }
 
-        .about-card:hover::before {
+        .premium-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(0, 102, 255, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 
+                        0 0 60px rgba(0, 102, 255, 0.2);
+        }
+
+        .premium-card:hover::before {
             transform: scaleX(1);
         }
 
-        .about-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        .premium-card:hover::after {
+            opacity: 0.03;
         }
 
-        .about-icon {
+        .card-icon {
             width: 80px;
             height: 80px;
-            background: var(--gradient-2);
+            background: var(--gradient-primary);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.4);
+            position: relative;
+            z-index: 1;
             transition: all 0.4s;
         }
 
-        .about-card:hover .about-icon {
+        .premium-card:hover .card-icon {
             transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 16px 50px rgba(0, 102, 255, 0.6);
         }
 
-        .about-icon svg {
+        .card-icon svg {
             width: 40px;
             height: 40px;
-            stroke: white;
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .about-card h3 {
-            font-size: 1.8rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .about-card p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        /* Benefits Section */
-        .benefits-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
-            padding: 4rem;
-            backdrop-filter: blur(20px);
-        }
-
-        .benefits-title {
-            font-size: 2rem;
-            color: white;
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            transition: all 0.3s;
-        }
-
-        .benefit-item:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(37, 99, 235, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .benefit-icon-svg {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-2);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
-            transition: all 0.4s;
-        }
-
-        .benefit-item:hover .benefit-icon-svg {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.5);
-        }
-
-        .benefit-icon-svg svg {
-            width: 32px;
-            height: 32px;
             stroke: white;
             fill: none;
             stroke-width: 2;
@@ -681,365 +699,283 @@
             stroke-linejoin: round;
         }
 
-        .benefit-item h4 {
+        .premium-card h3 {
+            font-size: 1.8rem;
             color: white;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .benefit-item p {
-            color: rgba(255, 255, 255, 0.65);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* Services Section Premium */
-        .services {
-            padding: 8rem 2rem;
-            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
-            position: relative;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            cursor: pointer;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-2);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s;
-        }
-
-        .service-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gradient-2);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover::after {
-            opacity: 0.03;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-2);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
-            position: relative;
-            z-index: 1;
-            transition: all 0.4s;
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-icon svg {
-            width: 36px;
-            height: 36px;
-            stroke: white;
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             font-weight: 700;
             position: relative;
             z-index: 1;
         }
 
-        .service-card p {
-            color: rgba(255, 255, 255, 0.7);
+        .premium-card p {
+            color: var(--text-secondary);
             line-height: 1.8;
             font-size: 1.05rem;
             position: relative;
             z-index: 1;
         }
 
-        /* Clients Section */
-        .clients {
-            padding: 8rem 2rem;
-            background: var(--darker);
-            position: relative;
-        }
-
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1300px;
-            margin: 3rem auto 0;
-        }
-
-        .client-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.4s;
-            backdrop-filter: blur(20px);
+        /* Technology Showcase */
+        .tech-showcase {
+            padding: 4rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
         }
 
-        .client-card::before {
+        .tech-showcase::before,
+        .tech-showcase::after {
             content: '';
             position: absolute;
-            inset: 0;
-            background: var(--gradient-2);
-            opacity: 0;
-            transition: opacity 0.4s;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        .client-card:hover::before {
-            opacity: 0.05;
+        .tech-showcase::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--dark) 0%, transparent 100%);
         }
 
-        .client-card:hover {
+        .tech-showcase::after {
+            right: 0;
+            background: linear-gradient(270deg, var(--dark) 0%, transparent 100%);
+        }
+
+        .tech-track {
+            display: flex;
+            gap: 3rem;
+            animation: scroll-infinite 40s linear infinite;
+            width: fit-content;
+        }
+
+        @keyframes scroll-infinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .tech-card {
+            min-width: 160px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s;
+            padding: 1.5rem;
+        }
+
+        .tech-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 102, 255, 0.4);
             transform: translateY(-8px);
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.2);
         }
 
-        .client-logo {
-            font-size: 1.8rem;
+        .tech-logo {
+            font-size: 2rem;
             font-weight: 900;
-            background: var(--gradient-2);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            padding: 0.2rem 0.3rem;
-            line-height: 1.2;
         }
 
-        .client-card h4 {
-            color: white;
-            font-size: 1.35rem;
-            margin-bottom: 0.8rem;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .client-card p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            position: relative;
+        .tech-name {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
         /* Stats Section */
-        .stats {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
-            margin: 6rem auto 0;
+            margin: 0 auto;
         }
 
         .stat-card {
             text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3.5rem 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 24px;
             backdrop-filter: blur(20px);
             transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
         .stat-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px);
+            border-color: rgba(0, 102, 255, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.05;
         }
 
         .stat-number {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 900;
-            background: var(--gradient-2);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             line-height: 1;
             display: inline-block;
-            padding: 0.2rem 0;
+            position: relative;
         }
 
         .stat-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
             font-weight: 600;
+            position: relative;
         }
 
-        /* Contact Section Premium */
-        .contact {
-            padding: 8rem 2rem;
-            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
-        }
-
-        .contact-container {
-            max-width: 1100px;
+        /* Contact Premium */
+        .contact-wrapper {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 4rem;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
             align-items: start;
+            position: relative;
+            z-index: 1;
         }
 
-        .contact-info {
-            position: sticky;
-            top: 120px;
+        .contact-info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 1;
         }
 
         .contact-item {
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(37, 99, 235, 0.4);
-            transform: translateX(5px);
+        .contact-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
-        .contact-item-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--gradient-2);
+        .contact-item-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            flex-shrink: 0;
         }
 
-        .contact-item-icon svg {
-            width: 26px;
-            height: 26px;
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
             stroke: white;
-            fill: none;
-            stroke-width: 2;
         }
 
         .contact-item h4 {
             color: white;
-            font-size: 1.15rem;
-            margin-bottom: 0.6rem;
+            font-size: 1.2rem;
             font-weight: 700;
         }
 
         .contact-item p {
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 1rem;
-            line-height: 1.6;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-left: 62px;
         }
 
-        .contact-form {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
-            padding: 3.5rem;
+        .contact-form-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 4rem;
             backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 1;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .form-group label {
             display: block;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 0.8rem;
+            color: white;
+            margin-bottom: 1rem;
             font-weight: 600;
             font-size: 0.95rem;
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 1.1rem 1.3rem;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1.5px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
             color: white;
             font-size: 1rem;
             font-family: inherit;
             transition: all 0.3s;
         }
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.09);
-            border-color: rgba(37, 99, 235, 0.6);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 102, 255, 0.6);
+            box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
         }
 
         .form-group textarea {
@@ -1049,16 +985,16 @@
 
         .submit-btn {
             width: 100%;
-            padding: 1.3rem;
-            background: var(--gradient-2);
+            padding: 1.4rem;
+            background: var(--gradient-primary);
             border: none;
-            border-radius: 14px;
+            border-radius: 16px;
             color: white;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 102, 255, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -1066,26 +1002,29 @@
         .submit-btn::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.6);
+            box-shadow: 0 16px 50px rgba(0, 102, 255, 0.6);
         }
 
         .submit-btn:hover::before {
-            opacity: 1;
+            left: 100%;
         }
 
         /* Footer Premium */
         footer {
-            background: var(--darker);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 5rem 2rem 2rem;
+            background: rgba(5, 7, 17, 0.8);
+            border-top: 1px solid var(--border-color);
+            padding: 6rem 3rem 3rem;
+            backdrop-filter: blur(20px);
         }
 
         .footer-content {
@@ -1096,28 +1035,61 @@
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
+            gap: 5rem;
+            margin-bottom: 5rem;
         }
 
         .footer-brand h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 900;
-            color: white;
-            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             line-height: 1.8;
-            max-width: 320px;
+            max-width: 350px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(0, 102, 255, 0.1);
+            border-color: rgba(0, 102, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-secondary);
         }
 
         .footer-links h4 {
             color: white;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
         }
 
         .footer-links ul {
@@ -1125,91 +1097,165 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             text-decoration: none;
             display: block;
-            margin-bottom: 0.9rem;
+            margin-bottom: 1rem;
             transition: all 0.3s;
             font-size: 0.95rem;
         }
 
         .footer-links a:hover {
             color: white;
-            padding-left: 8px;
+            padding-left: 10px;
         }
 
         .footer-bottom {
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
+        .footer-bottom a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .contact-container {
-                grid-template-columns: 1fr;
+        @media (max-width: 1200px) {
+            .nav-container {
+                padding: 0 2.5rem;
             }
 
-            .contact-info {
-                position: static;
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            section {
+                padding: 6rem 2.5rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .benefits-section {
-                padding: 3rem 2rem;
+            .trust-bar {
+                flex-direction: column;
+                gap: 2rem;
+                align-items: center;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
+            .hero {
+                padding: 8rem 2.5rem 6rem;
+            }
+
+            .card-grid {
+                gap: 2rem;
             }
         }
 
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
             .logo-img {
                 height: 60px;
                 max-width: 250px;
             }
-            
+
             .navbar.scrolled .logo-img {
                 height: 50px;
             }
 
             .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 400px;
-                height: 100vh;
-                background: rgba(2, 6, 23, 0.98);
-                backdrop-filter: blur(24px);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                gap: 2rem;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+               position: fixed;
+               top: 0;
+               right: -100%;
+               width: 80%;
+               max-width: 400px;
+               height: 100vh;
+               background: rgba(2, 6, 23, 0.98);
+               backdrop-filter: blur(24px);
+               flex-direction: column;
+               padding: 6rem 2.5rem 2rem;
+               gap: 2.5rem;
+               transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+               box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+               align-items: flex-start;
             }
 
             .nav-menu.active {
-                right: 0;
+               right: 0;
             }
+
+            .nav-menu.active .menu-close {
+            display: block;
+            }
+
+            .nav-menu a {
+               font-size: 1.15rem;
+               width: 100%;
+               text-align: left;
+               padding: 0.8rem 0;
+           }
+
+           .cta-nav {
+   width: 100%;
+   text-align: center;
+   justify-content: center;
+   display: flex;
+   margin-top: 1rem;
+   padding: 1.2rem 3rem; /* ← más ancho en móviles también */
+   font-size: 1.1rem;
+}
+
+
 
             .menu-toggle {
                 display: flex;
             }
 
             .hero {
-                padding: 6rem 1.5rem 3rem;
-                min-height: auto;
+                padding: 8rem 2rem 4rem;
+                min-height: 90vh;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+                letter-spacing: -2px;
+            }
+
+            .hero .lead-text {
+                font-size: 1.1rem;
             }
 
             .hero-buttons {
@@ -1222,20 +1268,32 @@
                 justify-content: center;
             }
 
-            .services,
-            .clients,
-            .contact,
-            .about {
-                padding: 5rem 1.5rem;
+            section {
+                padding: 5rem 2rem;
             }
 
-            .services-grid,
-            .clients-grid {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-desc {
+                font-size: 1rem;
+            }
+
+            .card-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .premium-card {
+                padding: 2.5rem;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-form-card {
+                padding: 2.5rem 2rem;
             }
 
             .footer-grid {
@@ -1243,64 +1301,177 @@
                 gap: 3rem;
             }
 
-            .nav-container {
-                padding: 0 1.5rem;
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
 
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .contact-form {
-                padding: 2rem;
-            }
-
-            .stats {
+            .stats-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .about-card,
-            .benefit-item {
-                padding: 2rem;
+            .trust-bar {
+                position: relative;
+                bottom: 2rem;
+                padding: 0 2rem;
             }
 
-            .benefits-grid {
-                grid-template-columns: 1fr;
+            .trust-item {
+                font-size: 0.85rem;
             }
 
-            .benefits-title {
+            .tech-track {
+                gap: 2rem;
+            }
+
+            .tech-card {
+                min-width: 140px;
+                height: 100px;
+            }
+
+            .tech-logo {
                 font-size: 1.6rem;
+            }
+
+            .tech-name {
+                font-size: 0.75rem;
             }
         }
 
         @media (max-width: 480px) {
-            .hero-badge {
-                font-size: 0.8rem;
-                padding: 0.5rem 1rem;
+            .nav-container {
+                padding: 0 1.5rem;
             }
 
-            .service-card,
-            .client-card,
-            .contact-item {
+            .logo-img {
+                height: 50px;
+                max-width: 180px;
+            }
+
+            .navbar.scrolled .logo-img {
+                height: 45px;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 0.6rem 1.2rem;
+                gap: 0.6rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .lead-text {
+                font-size: 1rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-label {
+                font-size: 0.75rem;
+                padding: 0.4rem 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .premium-card {
                 padding: 2rem;
+            }
+
+            .card-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .card-icon svg {
+                width: 35px;
+                height: 35px;
+            }
+
+            .premium-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .premium-card p {
+                font-size: 0.95rem;
             }
 
             .stat-number {
                 font-size: 3.5rem;
             }
 
-            .about-icon {
-                width: 70px;
-                height: 70px;
+            .stat-label {
+                font-size: 1rem;
             }
 
-            .about-icon svg {
+            .contact-form-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 1rem 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            .submit-btn {
+                padding: 1.2rem;
+                font-size: 1rem;
+            }
+
+            .contact-item p {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            .footer-grid {
+                gap: 2.5rem;
+            }
+
+            .trust-bar {
+                gap: 1.5rem;
+            }
+
+            .trust-icon {
                 width: 35px;
                 height: 35px;
             }
 
-            .benefits-section {
-                padding: 2.5rem 1.5rem;
+            .trust-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .premium-card {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
             }
         }
 
@@ -1309,12 +1480,12 @@
         }
 
         ::selection {
-            background: rgba(37, 99, 235, 0.3);
+            background: rgba(0, 102, 255, 0.3);
             color: white;
         }
 
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 12px;
         }
 
         ::-webkit-scrollbar-track {
@@ -1322,28 +1493,27 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--gradient-2);
+            background: var(--gradient-primary);
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent);
+            background: var(--secondary);
         }
+        /* --- Ajuste definitivo del botón azul "Consulta Gratis" --- */
+.cta-nav {
+  display: inline-flex !important; /* evita que se estire al 100% */
+  width: auto !important;          /* libera el ancho fijo del menú */
+  padding: 1rem 4rem !important;   /* ahora sí se hará más ancho */
+  min-width: 220px !important;
+}
 
-        /* Animation Classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
     </style>
 </head>
 <body>
+    <div class="mesh-gradient"></div>
+    <div class="noise-texture"></div>
+
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -1354,7 +1524,9 @@
                 <span></span>
                 <span></span>
             </div>
+
             <ul class="nav-menu" id="navMenu">
+            <div class="menu-close" id="menuClose"></div>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -1366,68 +1538,63 @@
     </nav>
 
     <section id="inicio" class="hero">
-        <div class="hero-bg"></div>
-        <div class="particles-container">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        <div class="binary-rain">
-            <div class="binary-column">01001101<br>01101001<br>01100111<br>01110010<br>01100001<br>01110100<br>01101001<br>01101111<br>01101110</div>
-            <div class="binary-column">01010011<br>01100101<br>01110010<br>01110110<br>01100101<br>01110010<br>01110011</div>
-            <div class="binary-column">01000100<br>01100001<br>01110100<br>01100001<br>01100010<br>01100001<br>01110011<br>01100101</div>
-            <div class="binary-column">01001100<br>01100101<br>01100111<br>01100001<br>01100011<br>01111001</div>
-            <div class="binary-column">01010101<br>01101110<br>01101001<br>01111000</div>
-            <div class="binary-column">01001111<br>01110010<br>01100001<br>01100011<br>01101100<br>01100101</div>
-            <div class="binary-column">01000011<br>01101100<br>01101111<br>01110101<br>01100100</div>
-            <div class="binary-column">01010110<br>01001101<br>01110111<br>01100001<br>01110010<br>01100101</div>
-            <div class="binary-column">01010100<br>01100101<br>01100011<br>01101000</div>
-            <div class="binary-column">01001001<br>01010100</div>
-        </div>
-        <div class="grid-overlay"></div>
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
+        <div class="hero-grid-bg"></div>
+        <div class="hero-spotlight"></div>
+        <div class="hero-spotlight"></div>
+        <div class="floating-orbs">
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
         </div>
         
         <div class="hero-content">
             <div class="hero-badge">
-                <span class="pulse-dot"></span>
-                Soporte Técnico Legacy 7x24 Disponible
+                <span class="status-indicator"></span>
+                Soporte Técnico Legacy 7x24 | Disponibilidad Inmediata
             </div>
             <h1>
-                Renovación de<br>
-                <span class="gradient-text">Infraestructura TI</span>
+                Renovación Enterprise de<br>
+                <span class="gradient-text" data-text="Infraestructura TI">Infraestructura TI</span>
             </h1>
-            <p>Expertos en migración de sistemas legacy con +25 años de experiencia. Disminuimos la obsolescencia tecnológica con el menor impacto y costo posible.</p>
+            <p class="lead-text">Especialistas certificados en migración de sistemas legacy con +25 años de experiencia comprobada. Minimizamos obsolescencia tecnológica con metodología probada, cero downtime y ROI garantizado.</p>
             <div class="hero-buttons">
                 <a href="#contacto" class="btn btn-primary">
-                    <span>Solicitar Assessment</span>
+                    <span>Assessment Gratuito</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
                 <a href="#servicios" class="btn btn-secondary">
-                    <span>Ver Servicios</span>
+                    <span>Explorar Servicios</span>
                 </a>
+            </div>
+        </div>
+
+        <div class="trust-bar">
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>Certificados Enterprise</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>100+ Migraciones Exitosas</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>SLA 99.9% Uptime</span>
             </div>
         </div>
     </section>
@@ -1435,158 +1602,117 @@
     <section id="nosotros" class="about">
         <div class="section-header">
             <div class="section-label">Quiénes Somos</div>
-            <h2 class="section-title">Expert Engineers in Migration Services</h2>
-            <p class="section-desc">Más de 25 años de experiencia en renovación tecnológica y migración de sistemas legacy</p>
+            <h2 class="section-title">Líderes en Transformación Tecnológica Enterprise</h2>
+            <p class="section-desc">Más de 25 años siendo el socio estratégico de empresas Fortune 500, gobierno y sector financiero en proyectos críticos de renovación tecnológica</p>
         </div>
         
-        <div class="about-container">
-            <div class="about-content">
-                <div class="about-card fade-in">
-                    <div class="about-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                        </svg>
-                    </div>
-                    <h3>Nuestra Misión</h3>
-                    <p>Disminuir la Obsolescencia y Renovar la Infraestructura Tecnológica de nuestros Socios de Negocios con el menor impacto y costo posible, apoyados por la experiencia de nuestro Equipo de Trabajo, así como de las herramientas existentes en el mercado y las desarrolladas en nuestra empresa.</p>
+        <div class="card-grid">
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
                 </div>
-
-                <div class="about-card fade-in">
-                    <div class="about-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                        </svg>
-                    </div>
-                    <h3>Nuestra Visión</h3>
-                    <p>Ser un socio de negocios útil y valioso para nuestros clientes, una Consultoría con calidad humana y una reconocida empresa en el mercado que provea servicios y experiencia que nos distinga como Especialistas en TI con Especialidad en renovación de Plataformas Tecnológicas.</p>
-                </div>
-
-                <div class="about-card fade-in">
-                    <div class="about-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3>Nuestro Equipo</h3>
-                    <p>Ingenieros con más de 25 años de experiencia en Migración de Sistemas Legacy. Especializados en Plataformas Unix/Linux con certificaciones en Hardware y Software que le apoyarán a tomar la mejor decisión de Renovación Tecnológica con el mínimo riesgo, la mayor rentabilidad y viabilidad para disminuir la obsolescencia de su empresa.</p>
-                </div>
+                <h3>Nuestra Misión</h3>
+                <p>Eliminar la obsolescencia tecnológica de organizaciones enterprise mediante metodologías probadas, herramientas propietarias y un equipo de ingenieros certificados con experiencia comprobada en entornos críticos 24/7.</p>
             </div>
 
-            <div class="benefits-section">
-                <h3 class="benefits-title">Al usar nuestros Servicios Profesionales</h3>
-                <div class="benefits-grid">
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon-svg">
-                            <svg viewBox="0 0 24 24">
-                                <line x1="12" y1="1" x2="12" y2="23"></line>
-                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                            </svg>
-                        </div>
-                        <h4>Optimización de Recursos</h4>
-                        <p>Maximizamos la eficiencia de su inversión tecnológica</p>
-                    </div>
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon-svg">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <h4>Responsabilidad Compartida</h4>
-                        <p>Absorbemos los riesgos, compartimos la responsabilidad y nos comprometemos con la empresa y las personas</p>
-                    </div>
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon-svg">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <circle cx="12" cy="12" r="6"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                            </svg>
-                        </div>
-                        <h4>Objetividad Total</h4>
-                        <p>No estamos sujetos a ninguna marca, siempre vemos la conveniencia del cliente</p>
-                    </div>
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon-svg">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
-                        </div>
-                        <h4>Integración Continua</h4>
-                        <p>Al no generar costos extras, nos volvemos parte de su día a día y su operación, generando y cumpliendo expectativas tecnológicas</p>
-                    </div>
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
                 </div>
+                <h3>Nuestra Visión</h3>
+                <p>Ser el socio estratégico #1 en LATAM para renovación de infraestructura crítica, reconocidos por nuestra calidad técnica, enfoque humano y capacidad de ejecución en proyectos de alto impacto empresarial.</p>
+            </div>
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3>Expertise Comprobado</h3>
+                <p>Ingenieros senior certificados en HP, Oracle, Dell, IBM y VMware. Experiencia directa en migraciones bancarias, gubernamentales y manufactura automotriz. Metodología propia con herramientas desarrolladas in-house.</p>
+            </div>
+        </div>
+
+        <div class="stats-grid" style="margin-top: 6rem;">
+            <div class="stat-card fade-in">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Proyectos Enterprise</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">SLA Cumplido</div>
             </div>
         </div>
     </section>
 
-    <section id="servicios" class="services">
+    <section id="servicios">
         <div class="section-header">
-            <div class="section-label">Nuestros Servicios</div>
-            <h2 class="section-title">Soluciones de Migración y Renovación</h2>
-            <p class="section-desc">Especialistas en renovación de plataformas tecnológicas con herramientas propias y experiencia comprobada en sistemas críticos empresariales.</p>
+            <div class="section-label">Servicios Especializados</div>
+            <h2 class="section-title">Soluciones Enterprise de Migración</h2>
+            <p class="section-desc">Servicios end-to-end para renovación tecnológica: desde assessment hasta implementación y soporte continuo 7x24</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card fade-in">
-                <div class="service-icon">
+        
+        <div class="card-grid">
+            <div class="premium-card fade-in">
+                <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                         <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                         <line x1="12" y1="22.08" x2="12" y2="12"></line>
                     </svg>
                 </div>
-                <h3>Renovación Tecnológica</h3>
-                <p>Migración completa de sistemas legacy con metodología probada. Minimizamos riesgos y costos mientras modernizamos su infraestructura crítica.</p>
+                <h3>Renovación Tecnológica Enterprise</h3>
+                <p>Migración completa de sistemas legacy con metodología six-sigma. P2P, P2V, V2V con herramientas propietarias. Cero downtime garantizado. TCO reducido hasta 60%.</p>
             </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <line x1="18" y1="20" x2="18" y2="10"></line>
                         <line x1="12" y1="20" x2="12" y2="4"></line>
                         <line x1="6" y1="20" x2="6" y2="14"></line>
                     </svg>
                 </div>
-                <h3>Assessment de Migración</h3>
-                <p>Análisis detallado con herramientas propias. Evaluación de TCO, inventarios de aplicaciones y células de migración para decisiones informadas.</p>
+                <h3>Assessment & Due Diligence</h3>
+                <p>Análisis técnico profundo con herramientas propias: inventario automatizado, análisis de dependencias, células de migración, roadmap ejecutivo y business case completo con ROI proyectado.</p>
             </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                     </svg>
                 </div>
                 <h3>Conversión de Plataformas</h3>
-                <p>P2P, P2V, V2V y conversión de arquitecturas cerradas a x86. Emulación de plataformas legacy sobre hardware actual con cero downtime.</p>
+                <p>Expertos en arquitecturas legacy: HP-UX, AIX, Solaris a x86. Emulación de plataformas propietarias. Conversión de bases de datos Oracle RAC. Migración de aplicaciones críticas sin refactoring.</p>
             </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                 </div>
-                <h3>Soporte Legacy 7x24</h3>
-                <p>Mantenimiento y soporte técnico continuo para sistemas legacy. Refacciones, monitoreo y atención inmediata en infraestructura crítica.</p>
+                <h3>Soporte Legacy Premium 7x24</h3>
+                <p>Mantenimiento proactivo de sistemas críticos legacy. Inventario de refacciones, monitoreo 24/7, respuesta <30min para P1. Especialistas on-call. Contratos SLA personalizados.</p>
             </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                    </svg>
-                </div>
-                <h3>Servicios de Infraestructura</h3>
-                <p>Implementación y soporte de servidores HP, Oracle, DELL, Supermicro. Storages, Virtual Connect HPE, SAN Brocade y cableado estructurado.</p>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
                     <svg viewBox="0 0 24 24">
                         <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                         <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
@@ -1594,137 +1720,275 @@
                     </svg>
                 </div>
                 <h3>Migración de Bases de Datos</h3>
-                <p>Migración y upgrade de Oracle y productos de terceros por renovación de hardware. Experiencia en entornos bancarios y gubernamentales.</p>
+                <p>Especialistas certificados Oracle: upgrade, migración cross-platform, RAC, Data Guard. Experiencia en entornos bancarios tier-1. Migración con disponibilidad continua.</p>
+            </div>
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                </div>
+                <h3>Infraestructura Enterprise</h3>
+                <p>Partners certificados: HP Enterprise, Dell EMC, Oracle, Supermicro, Teradata, Hitachi, Brocade, VMware. Implementación, optimización y soporte especializado.</p>
+            </div>
+        </div>
+
+        <div class="tech-showcase">
+            <div class="tech-track">
+                <div class="tech-card">
+                    <div class="tech-logo">HP</div>
+                    <div class="tech-name">HP Enterprise</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">ORACLE</div>
+                    <div class="tech-name">Oracle</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">DELL</div>
+                    <div class="tech-name">Dell EMC</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">SM</div>
+                    <div class="tech-name">Supermicro</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">TD</div>
+                    <div class="tech-name">Teradata</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">HDS</div>
+                    <div class="tech-name">Hitachi</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">BR</div>
+                    <div class="tech-name">Brocade</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">VM</div>
+                    <div class="tech-name">VMware</div>
+                </div>
+                
+                <!-- Duplicados para efecto infinito -->
+                <div class="tech-card">
+                    <div class="tech-logo">HP</div>
+                    <div class="tech-name">HP Enterprise</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">ORACLE</div>
+                    <div class="tech-name">Oracle</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">DELL</div>
+                    <div class="tech-name">Dell EMC</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">SM</div>
+                    <div class="tech-name">Supermicro</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">TD</div>
+                    <div class="tech-name">Teradata</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">HDS</div>
+                    <div class="tech-name">Hitachi</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">BR</div>
+                    <div class="tech-name">Brocade</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-logo">VM</div>
+                    <div class="tech-name">VMware</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="clientes" class="clients">
+    <section id="clientes">
         <div class="section-header">
             <div class="section-label">Casos de Éxito</div>
-            <h2 class="section-title">Confianza de Empresas Líderes</h2>
-            <p class="section-desc">Organizaciones de clase mundial que han confiado en nuestra experiencia para proyectos críticos de migración y renovación tecnológica.</p>
+            <h2 class="section-title">Confianza de Organizaciones Líderes</h2>
+            <p class="section-desc">Empresas Fortune 500, instituciones gubernamentales y sector financiero que han confiado proyectos críticos a nuestro equipo</p>
         </div>
-        <div class="clients-grid">
-            <div class="client-card fade-in">
-                <div class="client-logo">NISSAN</div>
-                <h4>Nissan / Jatco</h4>
-                <p>Migración y soporte continuo para operaciones en México y Japón</p>
+        
+        <div class="card-grid">
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                    </svg>
+                </div>
+                <h3>Nissan / Jatco</h3>
+                <p>Migración de sistemas críticos de manufactura. Operaciones 24/7 en México y Japón. Soporte continuo multi-región con SLA 99.95%.</p>
             </div>
-            <div class="client-card fade-in">
-                <div class="client-logo">GOBIERNO</div>
-                <h4>Sector Gobierno</h4>
-                <p>Migración de plataformas para CDMX, SEIEM, C5 y Oficialía Mayor</p>
-            </div>
-            <div class="client-card fade-in">
-                <div class="client-logo">BBVA</div>
-                <h4>BBVA / Santander</h4>
-                <p>Renovación tecnológica y assessment de migración en sector bancario</p>
-            </div>
-            <div class="client-card fade-in">
-                <div class="client-logo">SEDENA</div>
-                <h4>SEDENA / SEMAR</h4>
-                <p>Migración P2V y soporte de infraestructura de seguridad nacional</p>
-            </div>
-            <div class="client-card fade-in">
-                <div class="client-logo">AICM</div>
-                <h4>Aeropuerto CDMX</h4>
-                <p>Implementación de infraestructura crítica de redes y seguridad</p>
-            </div>
-            <div class="client-card fade-in">
-                <div class="client-logo">PASE</div>
-                <h4>PASE (TAG / Condor)</h4>
-                <p>Migración de plataforma y modernización de sistemas de peaje</p>
-            </div>
-        </div>
 
-        <div class="stats">
-            <div class="stat-card fade-in">
-                <div class="stat-number">25+</div>
-                <div class="stat-label">Años de Experiencia</div>
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+                <h3>Sector Gobierno</h3>
+                <p>CDMX, SEIEM, C5, Oficialía Mayor. Migración de plataformas críticas de servicios ciudadanos. Cumplimiento normativo y seguridad nacional.</p>
             </div>
-            <div class="stat-card fade-in">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">Migraciones Exitosas</div>
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                </div>
+                <h3>BBVA / Santander</h3>
+                <p>Renovación tecnológica tier-1 bancario. Assessment de migración Oracle RAC. Modernización de infraestructura core banking con disponibilidad 24/7.</p>
             </div>
-            <div class="stat-card fade-in">
-                <div class="stat-number">99.9%</div>
-                <div class="stat-label">Disponibilidad SLA</div>
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <h3>SEDENA / SEMAR</h3>
+                <p>Migración P2V de sistemas de seguridad nacional. Soporte de infraestructura crítica clasificada. Máxima confidencialidad y disponibilidad.</p>
+            </div>
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                </div>
+                <h3>Aeropuerto CDMX</h3>
+                <p>Implementación de infraestructura crítica de redes y seguridad perimetral. Sistemas de alta disponibilidad para operaciones aeroportuarias.</p>
+            </div>
+
+            <div class="premium-card fade-in">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"></path>
+                    </svg>
+                </div>
+                <h3>PASE (TAG / Condor)</h3>
+                <p>Migración completa de plataforma de peaje electrónico. Modernización de sistemas legacy con millones de transacciones diarias.</p>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="contact">
+    <section id="contacto">
         <div class="section-header">
             <div class="section-label">Contacto</div>
-            <h2 class="section-title">Solicite un Assessment Gratuito</h2>
-            <p class="section-desc">Hablemos sobre cómo podemos ayudarle a renovar su infraestructura tecnológica con mínimo riesgo y costo.</p>
+            <h2 class="section-title">Solicite un Assessment Ejecutivo</h2>
+            <p class="section-desc">Comencemos una conversación sobre su proyecto de renovación tecnológica. Assessment inicial sin costo ni compromiso.</p>
         </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-item fade-in">
-                    <div class="contact-item-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
+
+        <div class="contact-wrapper">
+            <div class="contact-info-card fade-in">
+                <div class="contact-item">
+                    <div class="contact-item-header">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h4>Email</h4>
                     </div>
-                    <h4>Email</h4>
-                    <p>hipolito.almaraz@eei-migrationservices.com.mx<br>Respuesta en 24 horas</p>
+                    <p>hipolito.almaraz@eei-migrationservices.com.mx<br><strong>Respuesta garantizada en 24 horas</strong></p>
                 </div>
-                <div class="contact-item fade-in">
-                    <div class="contact-item-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
+
+                <div class="contact-item">
+                    <div class="contact-item-header">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h4>Teléfono Directo</h4>
                     </div>
-                    <h4>Teléfono</h4>
-                    <p>+52 (561) 924-8130<br>Lun - Vie: 9:00 - 18:00</p>
+                    <p>+52 (561) 924-8130<br><strong>Lun - Vie: 9:00 - 18:00 hrs</strong></p>
                 </div>
-                <div class="contact-item fade-in">
-                    <div class="contact-item-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
+
+                <div class="contact-item">
+                    <div class="contact-item-header">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h4>Oficinas</h4>
                     </div>
-                    <h4>Ubicación</h4>
-                    <p>Querétaro</q>, Querétaro<br>México</p>
-                    <p>Ciudad de México</q>, CDMX<br>México</p>
+                    <p><strong>Querétaro, Qro.</strong><br>Centro Tecnológico</p>
+                    <p style="margin-top: 1rem;"><strong>Ciudad de México</strong><br>Oficina Comercial</p>
                 </div>
             </div>
 
-            <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Nombre Completo *</label>
-                        <input type="text" required placeholder="Juan Pérez">
+            <div class="contact-form-card fade-in">
+                <form action="https://formsubmit.co/hipolito.almaraz@eei-migrationservices.com.mx" method="POST">
+                    <!-- Configuración de FormSubmit -->
+                    <input type="hidden" name="_subject" value="Nueva Solicitud de Assessment - Expert Engineers">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre Completo *</label>
+                            <input type="text" name="nombre" required placeholder="Ej: Juan Pérez García">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Corporativo *</label>
+                            <input type="email" name="email" required placeholder="juan.perez@empresa.com">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Email Corporativo *</label>
-                        <input type="email" required placeholder="juan@empresa.com">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Empresa *</label>
+                            <input type="text" name="empresa" required placeholder="Nombre de su organización">
+                        </div>
+                        <div class="form-group">
+                            <label>Cargo</label>
+                            <input type="text" name="cargo" placeholder="Ej: Director de TI, CTO">
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Empresa *</label>
-                        <input type="text" required placeholder="Nombre de su empresa">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="tel" name="telefono" placeholder="+52 (555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label>Servicio de Interés</label>
+                            <select name="servicio">
+                                <option value="">Seleccione un servicio</option>
+                                <option value="assessment">Assessment & Due Diligence</option>
+                                <option value="migracion">Migración Enterprise</option>
+                                <option value="soporte">Soporte Legacy 7x24</option>
+                                <option value="conversion">Conversión de Plataformas</option>
+                                <option value="database">Migración de Bases de Datos</option>
+                                <option value="infraestructura">Infraestructura Enterprise</option>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="form-group">
-                        <label>Teléfono</label>
-                        <input type="tel" placeholder="+52 (561) 924-8130">
+                        <label>Cuéntenos sobre su proyecto *</label>
+                        <textarea name="proyecto" required placeholder="Describa su necesidad de renovación tecnológica, plataformas actuales, objetivos y timeline esperado..."></textarea>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Servicio de Interés</label>
-                    <input type="text" placeholder="Ej: Assessment de Migración, Soporte Legacy, etc.">
-                </div>
-                <div class="form-group">
-                    <label>Mensaje *</label>
-                    <textarea required placeholder="Describa su proyecto o necesidad de renovación tecnológica..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Enviar Consulta</button>
-            </form>
+
+                    <button type="submit" class="submit-btn">Enviar Solicitud de Assessment</button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -1732,88 +1996,143 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3>Expert Engineers</h3>
-                    <p>Especialistas en migración de sistemas legacy y renovación de infraestructura tecnológica con más de 25 años de experiencia comprobada.</p>
+                    <h3>EXPERT ENGINEERS</h3>
+                    <p>Especialistas certificados en migración de sistemas legacy y renovación de infraestructura tecnológica enterprise con más de 25 años de experiencia comprobada en proyectos críticos.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/p/EEi-Migration-Services-100054454422506/?locale=es_LA//tu-pagina" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/eei-migration-services//company/tu-empresa" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="2"/>
+                                <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/5215619248130" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+
                 <div class="footer-links">
                     <h4>Servicios</h4>
                     <ul>
                         <li><a href="#servicios">Renovación Tecnológica</a></li>
-                        <li><a href="#servicios">Assessment de Migración</a></li>
+                        <li><a href="#servicios">Assessment Enterprise</a></li>
                         <li><a href="#servicios">Conversión P2P/P2V/V2V</a></li>
                         <li><a href="#servicios">Soporte Legacy 7x24</a></li>
+                        <li><a href="#servicios">Migración de BD</a></li>
+                        <li><a href="#servicios">Infraestructura</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links">
                     <h4>Empresa</h4>
                     <ul>
                         <li><a href="#nosotros">Sobre Nosotros</a></li>
+                        <li><a href="#nosotros">Misión y Visión</a></li>
                         <li><a href="#clientes">Casos de Éxito</a></li>
                         <li><a href="#contacto">Contacto</a></li>
-                        <li><a href="#servicios">Infraestructura</a></li>
+                        <li><a href="#contacto">Trabajar con Nosotros</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links">
                     <h4>Especialidades</h4>
                     <ul>
-                        <li><a href="#servicios">Unix/Linux</a></li>
+                        <li><a href="#servicios">Unix/Linux Legacy</a></li>
                         <li><a href="#servicios">Oracle Database</a></li>
-                        <li><a href="#servicios">HP/IBM/DELL</a></li>
-                        <li><a href="#servicios">Sistemas Legacy</a></li>
+                        <li><a href="#servicios">HP/Dell/IBM</a></li>
+                        <li><a href="#servicios">VMware</a></li>
+                        <li><a href="#servicios">Sistemas Críticos 24/7</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2025 Expert Engineers in Migration Services SAS de CV. Todos los derechos reservados.</p>
+                <div>
+                    <a href="#">Política de Privacidad</a> • 
+                    <a href="#">Términos de Servicio</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Navbar scroll effect
+        // Navbar scroll effect premium
         const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            
+            lastScroll = currentScroll;
         });
 
         // Mobile menu toggle
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-        
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+        const menuClose = document.getElementById('menuClose');
+
+       menuToggle.addEventListener('click', () => {
+       navMenu.classList.add('active');
         });
+
+       menuClose.addEventListener('click', () => {
+       navMenu.classList.remove('active');
+       });
 
         // Close menu when clicking on a link
         const navLinks = document.querySelectorAll('.nav-menu a');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
+        link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+       });
 
-        // Form submission
+        // Form submission with validation
         function handleSubmit(event) {
             event.preventDefault();
-            alert('¡Gracias por su interés! Nos pondremos en contacto con usted en las próximas 24 horas para discutir su proyecto de renovación tecnológica.');
-            event.target.reset();
+            
+            // Show success message
+            const form = event.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = '✓ Solicitud Enviada';
+            submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+            
+            setTimeout(() => {
+                alert('¡Gracias por su interés!\n\nHemos recibido su solicitud de assessment. Un ingeniero senior de nuestro equipo se pondrá en contacto con usted en las próximas 24 horas para discutir los detalles de su proyecto de renovación tecnológica.\n\nRecibirá un correo de confirmación en los próximos minutos.');
+                form.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+            }, 2000);
         }
 
-        // Smooth scroll
+        // Smooth scroll with offset for fixed navbar
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const offsetTop = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
                     });
                 }
             });
@@ -1821,14 +2140,16 @@
 
         // Intersection Observer for fade-in animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
                 }
             });
         }, observerOptions);
@@ -1839,18 +2160,20 @@
 
         // Counter animation for stats
         const animateCounter = (el, target) => {
-            const duration = 2000;
+            const duration = 2500;
             const start = 0;
             const increment = target / (duration / 16);
             let current = start;
+            const suffix = el.textContent.replace(/[0-9.]/g, '');
             
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
-                    el.textContent = target + (el.textContent.includes('+') ? '+' : el.textContent.includes('%') ? '%' : '');
+                    el.textContent = target + suffix;
                     clearInterval(timer);
                 } else {
-                    el.textContent = Math.floor(current) + (el.textContent.includes('+') ? '+' : el.textContent.includes('%') ? '%' : '');
+                    const displayValue = Math.floor(current);
+                    el.textContent = displayValue + suffix;
                 }
             }, 16);
         };
@@ -1862,7 +2185,7 @@
                     entry.target.classList.add('counted');
                     const numberEl = entry.target.querySelector('.stat-number');
                     const text = numberEl.textContent;
-                    const number = parseInt(text.replace(/\D/g, ''));
+                    const number = parseFloat(text.replace(/[^0-9.]/g, ''));
                     animateCounter(numberEl, number);
                 }
             });
@@ -1870,6 +2193,66 @@
 
         document.querySelectorAll('.stat-card').forEach(card => {
             statsObserver.observe(card);
+        });
+
+        // Parallax effect for hero elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroContent = document.querySelector('.hero-content');
+            const spotlights = document.querySelectorAll('.hero-spotlight');
+            
+            if (heroContent && scrolled < window.innerHeight) {
+                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+                heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+                
+                spotlights.forEach((spotlight, index) => {
+                    spotlight.style.transform = `translate(${scrolled * (index % 2 === 0 ? 0.3 : -0.3)}px, ${scrolled * 0.2}px)`;
+                });
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Interactive card tilt effect
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Performance optimization: Pause animations when not visible
+        let animationsPaused = false;
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                document.querySelectorAll('.tech-track, .floating-orbs, .hero-grid-bg').forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                });
+            } else {
+                document.querySelectorAll('.tech-track, .floating-orbs, .hero-grid-bg').forEach(el => {
+                    el.style.animationPlayState = 'running';
+                });
+            }
         });
     </script>
 </body>
