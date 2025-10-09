@@ -39,7 +39,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Advanced Background Effects */
         .mesh-gradient {
             position: fixed;
             top: 0;
@@ -67,7 +66,6 @@
             pointer-events: none;
         }
 
-        /* Premium Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -120,16 +118,6 @@
             height: 55px;
         }
 
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-        }
-
         .nav-menu {
             display: flex;
             gap: 3rem;
@@ -171,31 +159,34 @@
         }
 
         .cta-nav {
-            background: var(--gradient-2);
-            padding: 0.7rem 1.8rem;
+            display: inline-flex !important;
+            width: auto !important;
+            padding: 1rem 4rem !important;
+            min-width: 220px !important;
+            background: var(--gradient-primary);
             border-radius: 50px;
             color: white !important;
             font-weight: 600;
+            font-size: 1.05rem;
             transition: all 0.3s;
-            box-shadow: 0 4px 200px rgba(37, 99, 235, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 10001;
+            cursor: pointer;
+            pointer-events: auto;
         }
 
-        .cta-nav {
-   background: var(--gradient-primary);
-   padding: 1rem 2.5rem; /* ← antes era 2.5rem, ahora más ancho */
-   border-radius: 50px;
-   color: white !important;
-   font-weight: 600;
-   font-size: 1.05rem;
-   transition: all 0.3s;
-   box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
-   position: relative;
-   overflow: hidden;
-   z-index: 10001;
-   cursor: pointer;
-   pointer-events: auto;
-}
-
+        .cta-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
 
         .cta-nav:hover::before {
             left: 100%;
@@ -257,7 +248,6 @@
             transform: translate(-50%, -50%) rotate(-45deg);
         }
 
-        /* Hero Premium */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -419,20 +409,6 @@
             position: relative;
         }
 
-        .gradient-text::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -1;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: blur(20px);
-            opacity: 0.5;
-        }
-
         @keyframes shimmer {
             to { background-position: 200% center; }
         }
@@ -527,17 +503,19 @@
             transform: translateX(4px);
         }
 
-        /* Trust Indicators */
         .trust-bar {
             position: absolute;
             bottom: 4rem;
             left: 0;
             right: 0;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 4rem;
+            align-items: center;
+            gap: clamp(2rem, 4vw, 4rem);
             opacity: 0;
             animation: fadeIn 1s ease-out 1s forwards;
+            padding: 0 3rem;
         }
 
         @keyframes fadeIn {
@@ -549,7 +527,9 @@
             align-items: center;
             gap: 0.8rem;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            white-space: nowrap;
+            min-width: fit-content;
         }
 
         .trust-icon {
@@ -561,6 +541,7 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(0, 102, 255, 0.2);
+            flex-shrink: 0;
         }
 
         .trust-icon svg {
@@ -569,7 +550,6 @@
             stroke: #60a5fa;
         }
 
-        /* Section Base Styles */
         section {
             padding: 8rem 3rem;
             position: relative;
@@ -612,7 +592,6 @@
             margin: 0 auto;
         }
 
-        /* Premium Cards */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -716,7 +695,6 @@
             z-index: 1;
         }
 
-        /* Technology Showcase */
         .tech-showcase {
             padding: 4rem 0;
             margin-top: 3rem;
@@ -796,18 +774,18 @@
             font-weight: 500;
         }
 
-        /* Stats Section */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 3rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .stat-card {
             text-align: center;
-            padding: 3.5rem 2.5rem;
+            padding: 4rem 3rem;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 24px;
@@ -815,6 +793,7 @@
             transition: all 0.4s;
             position: relative;
             overflow: hidden;
+            min-width: 280px;
         }
 
         .stat-card::before {
@@ -837,26 +816,28 @@
         }
 
         .stat-number {
-            font-size: 5rem;
+            font-size: clamp(1.5rem, 8vw, 4rem);
             font-weight: 900;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
-            line-height: 1;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
             display: inline-block;
             position: relative;
+            word-break: keep-all;
+            white-space: nowrap;
         }
 
         .stat-label {
             color: var(--text-secondary);
-            font-size: 1.15rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             font-weight: 600;
             position: relative;
+            line-height: 1.4;
         }
 
-        /* Contact Premium */
         .contact-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -969,6 +950,27 @@
             transition: all 0.3s;
         }
 
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2360a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 20px;
+            padding-right: 3rem;
+        }
+
+        .form-group select option {
+            background: rgba(10, 14, 26, 0.98);
+            color: white;
+            padding: 1rem;
+        }
+
+        .form-group select option:hover,
+        .form-group select option:checked {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
+        }
+
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
@@ -1019,7 +1021,6 @@
             left: 100%;
         }
 
-        /* Footer Premium */
         footer {
             background: rgba(5, 7, 17, 0.8);
             border-top: 1px solid var(--border-color);
@@ -1130,7 +1131,6 @@
             color: white;
         }
 
-        /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(40px);
@@ -1142,7 +1142,16 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
+        @media (max-width: 1600px) {
+            .hero-content {
+                padding: 0 2rem;
+            }
+
+            .trust-bar {
+                gap: 3rem;
+            }
+        }
+
         @media (max-width: 1200px) {
             .nav-container {
                 padding: 0 2.5rem;
@@ -1167,18 +1176,33 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .trust-bar {
-                flex-direction: column;
-                gap: 2rem;
-                align-items: center;
-            }
-
             .hero {
                 padding: 8rem 2.5rem 6rem;
             }
 
             .card-grid {
                 gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+                padding: 0 1.5rem;
+            }
+
+            .stat-card {
+                padding: 3rem 2rem;
+            }
+
+            .stat-number {
+                font-size: clamp(3rem, 7vw, 4.5rem);
+            }
+
+            .trust-bar {
+                position: relative;
+                bottom: 2rem;
+                gap: 2rem;
+                padding: 0 2rem;
             }
         }
 
@@ -1197,48 +1221,46 @@
             }
 
             .nav-menu {
-               position: fixed;
-               top: 0;
-               right: -100%;
-               width: 80%;
-               max-width: 400px;
-               height: 100vh;
-               background: rgba(2, 6, 23, 0.98);
-               backdrop-filter: blur(24px);
-               flex-direction: column;
-               padding: 6rem 2.5rem 2rem;
-               gap: 2.5rem;
-               transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-               box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
-               align-items: flex-start;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: rgba(2, 6, 23, 0.98);
+                backdrop-filter: blur(24px);
+                flex-direction: column;
+                padding: 6rem 2.5rem 2rem;
+                gap: 2.5rem;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+                align-items: flex-start;
             }
 
             .nav-menu.active {
-               right: 0;
+                right: 0;
             }
 
             .nav-menu.active .menu-close {
-            display: block;
+                display: block;
             }
 
             .nav-menu a {
-               font-size: 1.15rem;
-               width: 100%;
-               text-align: left;
-               padding: 0.8rem 0;
-           }
+                font-size: 1.15rem;
+                width: 100%;
+                text-align: left;
+                padding: 0.8rem 0;
+            }
 
-           .cta-nav {
-   width: 100%;
-   text-align: center;
-   justify-content: center;
-   display: flex;
-   margin-top: 1rem;
-   padding: 1.2rem 3rem; /* ← más ancho en móviles también */
-   font-size: 1.1rem;
-}
-
-
+            .cta-nav {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+                display: flex;
+                margin-top: 1rem;
+                padding: 1.2rem 3rem;
+                font-size: 1.1rem;
+            }
 
             .menu-toggle {
                 display: flex;
@@ -1312,14 +1334,32 @@
                 gap: 2rem;
             }
 
+            .stat-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: clamp(2.5rem, 12vw, 3.5rem);
+                margin-bottom: 1rem;
+            }
+
+            .stat-label {
+                font-size: clamp(0.9rem, 3.5vw, 1rem);
+            }
+
             .trust-bar {
                 position: relative;
                 bottom: 2rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
                 padding: 0 2rem;
             }
 
             .trust-item {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
+                width: 100%;
+                white-space: normal;
             }
 
             .tech-track {
@@ -1414,11 +1454,16 @@
             }
 
             .stat-number {
-                font-size: 3.5rem;
+                font-size: clamp(2.5rem, 12vw, 3.5rem);
+                margin-bottom: 1rem;
             }
 
             .stat-label {
-                font-size: 1rem;
+                font-size: clamp(0.9rem, 3.5vw, 1rem);
+            }
+
+            .stat-card {
+                padding: 2.5rem 1.5rem;
             }
 
             .contact-form-card {
@@ -1447,12 +1492,18 @@
             }
 
             .trust-bar {
-                gap: 1.5rem;
+                gap: 1.2rem;
+                padding: 0 1.5rem;
+            }
+
+            .trust-item {
+                font-size: 0.85rem;
             }
 
             .trust-icon {
                 width: 35px;
                 height: 35px;
+                min-width: 35px;
             }
 
             .trust-icon svg {
@@ -1471,7 +1522,15 @@
             }
 
             .stat-number {
-                font-size: 3rem;
+                font-size: clamp(2.2rem, 14vw, 3rem);
+            }
+
+            .stat-card {
+                padding: 2rem 1.2rem;
+            }
+
+            .trust-item {
+                font-size: 0.8rem;
             }
         }
 
@@ -1500,14 +1559,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--secondary);
         }
-        /* --- Ajuste definitivo del botón azul "Consulta Gratis" --- */
-.cta-nav {
-  display: inline-flex !important; /* evita que se estire al 100% */
-  width: auto !important;          /* libera el ancho fijo del menú */
-  padding: 1rem 4rem !important;   /* ahora sí se hará más ancho */
-  min-width: 220px !important;
-}
-
     </style>
 </head>
 <body>
@@ -1526,7 +1577,7 @@
             </div>
 
             <ul class="nav-menu" id="navMenu">
-            <div class="menu-close" id="menuClose"></div>
+                <div class="menu-close" id="menuClose"></div>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -1570,33 +1621,7 @@
             </div>
         </div>
 
-        <div class="trust-bar">
-            <div class="trust-item">
-                <div class="trust-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <span>Certificados Enterprise</span>
-            </div>
-            <div class="trust-item">
-                <div class="trust-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <span>100+ Migraciones Exitosas</span>
-            </div>
-            <div class="trust-item">
-                <div class="trust-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                        <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <span>SLA 99.9% Uptime</span>
-            </div>
-        </div>
+
     </section>
 
     <section id="nosotros" class="about">
@@ -1772,7 +1797,6 @@
                     <div class="tech-name">VMware</div>
                 </div>
                 
-                <!-- Duplicados para efecto infinito -->
                 <div class="tech-card">
                     <div class="tech-logo">HP</div>
                     <div class="tech-name">HP Enterprise</div>
@@ -1934,7 +1958,6 @@
 
             <div class="contact-form-card fade-in">
                 <form action="https://formsubmit.co/hipolito.almaraz@eei-migrationservices.com.mx" method="POST">
-                    <!-- Configuración de FormSubmit -->
                     <input type="hidden" name="_subject" value="Nueva Solicitud de Assessment - Expert Engineers">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
@@ -1999,12 +2022,12 @@
                     <h3>EXPERT ENGINEERS</h3>
                     <p>Especialistas certificados en migración de sistemas legacy y renovación de infraestructura tecnológica enterprise con más de 25 años de experiencia comprobada en proyectos críticos.</p>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/p/EEi-Migration-Services-100054454422506/?locale=es_LA//tu-pagina" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <a href="https://www.facebook.com/p/EEi-Migration-Services-100054454422506/?locale=es_LA" target="_blank" rel="noopener noreferrer" class="social-link">
                             <svg viewBox="0 0 24 24" fill="none">
                                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2"/>
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/company/eei-migration-services//company/tu-empresa" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <a href="https://www.linkedin.com/company/eei-migration-services/" target="_blank" rel="noopener noreferrer" class="social-link">
                             <svg viewBox="0 0 24 24" fill="none">
                                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="2"/>
                                 <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2"/>
@@ -2065,7 +2088,6 @@
     </footer>
 
     <script>
-        // Navbar scroll effect premium
         const navbar = document.getElementById('navbar');
         let lastScroll = 0;
         
@@ -2081,49 +2103,25 @@
             lastScroll = currentScroll;
         });
 
-        // Mobile menu toggle
-        // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         const menuClose = document.getElementById('menuClose');
 
-       menuToggle.addEventListener('click', () => {
-       navMenu.classList.add('active');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.add('active');
         });
 
-       menuClose.addEventListener('click', () => {
-       navMenu.classList.remove('active');
-       });
+        menuClose.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
 
-        // Close menu when clicking on a link
         const navLinks = document.querySelectorAll('.nav-menu a');
         navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-    });
-       });
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
 
-        // Form submission with validation
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            // Show success message
-            const form = event.target;
-            const submitBtn = form.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = '✓ Solicitud Enviada';
-            submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-            
-            setTimeout(() => {
-                alert('¡Gracias por su interés!\n\nHemos recibido su solicitud de assessment. Un ingeniero senior de nuestro equipo se pondrá en contacto con usted en las próximas 24 horas para discutir los detalles de su proyecto de renovación tecnológica.\n\nRecibirá un correo de confirmación en los próximos minutos.');
-                form.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = '';
-            }, 2000);
-        }
-
-        // Smooth scroll with offset for fixed navbar
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2138,7 +2136,6 @@
             });
         });
 
-        // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -100px 0px'
@@ -2158,7 +2155,6 @@
             observer.observe(el);
         });
 
-        // Counter animation for stats
         const animateCounter = (el, target) => {
             const duration = 2500;
             const start = 0;
@@ -2178,7 +2174,6 @@
             }, 16);
         };
 
-        // Observe stats for counter animation
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
@@ -2195,7 +2190,6 @@
             statsObserver.observe(card);
         });
 
-        // Parallax effect for hero elements
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const heroContent = document.querySelector('.hero-content');
@@ -2211,7 +2205,6 @@
             }
         });
 
-        // Add loading animation
         window.addEventListener('load', () => {
             document.body.style.opacity = '0';
             setTimeout(() => {
@@ -2220,7 +2213,6 @@
             }, 100);
         });
 
-        // Interactive card tilt effect
         document.querySelectorAll('.premium-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -2241,8 +2233,6 @@
             });
         });
 
-        // Performance optimization: Pause animations when not visible
-        let animationsPaused = false;
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 document.querySelectorAll('.tech-track, .floating-orbs, .hero-grid-bg').forEach(el => {
