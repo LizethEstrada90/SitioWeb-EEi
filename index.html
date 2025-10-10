@@ -25,8 +25,8 @@
         [data-theme="dark"] {
             --dark: #0a0e27;
             --dark-light: #1a1f3a;
-            --text: #e8eaed;
-            --text-dim: #9aa0b5;
+            --text: #ffffff;
+            --text-dim: #ffffff;
             --bg-main: #0a0e27;
             --bg-secondary: #1a1f3a;
             --bg-card: linear-gradient(135deg, rgba(26, 31, 58, 0.8), rgba(10, 14, 39, 0.8));
@@ -38,8 +38,8 @@
         [data-theme="light"] {
             --dark: #ffffff;
             --dark-light: #f5f7fa;
-            --text: #1a1f3a;
-            --text-dim: #5a6b8c;
+            --text: #0a0e27;
+            --text-dim: #000000;
             --bg-main: #ffffff;
             --bg-secondary: #f5f7fa;
             --bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 247, 250, 0.95));
@@ -664,8 +664,7 @@
             z-index: -1;
             opacity: 0;
             transition: opacity 0.5s ease;
-}
-
+        }
 
         .premium-card:hover::after {
             opacity: 1;
@@ -916,6 +915,12 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             font-family: inherit;
+        }
+
+        .form-group select option {
+            background: var(--bg-secondary);
+            color: var(--text);
+            padding: 0.5rem;
         }
 
         .form-group input:focus,
@@ -1184,12 +1189,248 @@
                 display: none;
             }
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10001;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 900px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ff4444;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .modal-close:hover {
+            background: #ff4444;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            color: var(--text);
+            margin-bottom: 2rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+
+        .modal-content h3 {
+            color: var(--text);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .modal-content p,
+        .modal-content ul {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content ul {
+            margin-left: 2rem;
+        }
+
+        .modal-content strong {
+            color: var(--text);
+        }
+
+        .modal-note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
+            .modal.active {
+                padding: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loader"></div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Privacy Policy Modal -->
+    <div id="modalPrivacidad" class="modal" onclick="if(event.target === this) { this.classList.remove('active'); document.body.style.overflow=''; }">
+        <div class="modal-content">
+            <span class="modal-close" onclick="document.getElementById('modalPrivacidad').classList.remove('active'); document.body.style.overflow='';">&times;</span>
+            <h2>Política de Privacidad</h2>
+            
+            <p><strong>Última actualización:</strong> Enero 2025</p>
+            
+            <h3>1. Información General</h3>
+            <p>Expert Engineers in Migration Services SAS de CV (en adelante "Expert Engineers", "nosotros" o "la empresa"), con domicilio en Querétaro, México, es responsable del tratamiento de sus datos personales de acuerdo con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).</p>
+            
+            <h3>2. Datos Personales Recolectados</h3>
+            <p>A través de nuestro sitio web y formularios de contacto, recolectamos los siguientes datos personales:</p>
+            <ul>
+                <li>Nombre completo</li>
+                <li>Correo electrónico corporativo</li>
+                <li>Teléfono de contacto</li>
+                <li>Nombre de la empresa</li>
+                <li>Cargo o posición</li>
+                <li>Descripción del proyecto o necesidad tecnológica</li>
+            </ul>
+            
+            <h3>3. Finalidad del Tratamiento</h3>
+            <p>Los datos personales son utilizados exclusivamente para:</p>
+            <ul>
+                <li>Contactar al solicitante para dar respuesta a su consulta</li>
+                <li>Proporcionar información sobre nuestros servicios</li>
+                <li>Realizar evaluaciones técnicas (assessments)</li>
+                <li>Elaborar propuestas comerciales personalizadas</li>
+                <li>Mantener comunicación relacionada con proyectos de migración tecnológica</li>
+            </ul>
+            
+            <h3>4. Protección de Datos</h3>
+            <p>Expert Engineers implementa medidas de seguridad administrativas, técnicas y físicas para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso no autorizado. Su información no será compartida con terceros sin su consentimiento expreso, excepto cuando sea requerido por autoridades competentes.</p>
+            
+            <h3>5. Derechos ARCO</h3>
+            <p>Usted tiene derecho a:</p>
+            <ul>
+                <li><strong>Acceder</strong> a sus datos personales en nuestra posesión</li>
+                <li><strong>Rectificar</strong> datos inexactos o incompletos</li>
+                <li><strong>Cancelar</strong> sus datos cuando considere que no están siendo utilizados conforme a la ley</li>
+                <li><strong>Oponerse</strong> al tratamiento de sus datos para fines específicos</li>
+            </ul>
+            <p>Para ejercer sus derechos ARCO, puede contactarnos en: <strong>hipolito.almaraz@eei-migrationservices.com.mx</strong></p>
+            
+            <h3>6. Cookies y Tecnologías Similares</h3>
+            <p>Este sitio web puede utilizar cookies para mejorar la experiencia del usuario y analizar el tráfico del sitio. Puede configurar su navegador para rechazar cookies, aunque esto puede afectar algunas funcionalidades del sitio.</p>
+            
+            <h3>7. Cambios al Aviso de Privacidad</h3>
+            <p>Expert Engineers se reserva el derecho de modificar esta Política de Privacidad en cualquier momento. Los cambios serán notificados a través de este sitio web.</p>
+            
+            <p class="modal-note"><strong>Nota:</strong> Este documento es de carácter informativo general. Para consultas específicas sobre el tratamiento de sus datos personales, por favor contáctenos directamente.</p>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="modalTerminos" class="modal" onclick="if(event.target === this) { this.classList.remove('active'); document.body.style.overflow=''; }">
+        <div class="modal-content">
+            <span class="modal-close" onclick="document.getElementById('modalTerminos').classList.remove('active'); document.body.style.overflow='';">&times;</span>
+            <h2>Términos de Servicio</h2>
+            
+            <p><strong>Última actualización:</strong> Enero 2025</p>
+            
+            <h3>1. Aceptación de Términos</h3>
+            <p>Al acceder y utilizar este sitio web, usted acepta estar sujeto a estos Términos de Servicio y todas las leyes y regulaciones aplicables. Si no está de acuerdo con alguno de estos términos, no debe utilizar este sitio.</p>
+            
+            <h3>2. Uso del Sitio</h3>
+            <p>Este sitio web es propiedad de Expert Engineers in Migration Services SAS de CV y está destinado exclusivamente para:</p>
+            <ul>
+                <li>Proporcionar información sobre servicios de migración y renovación tecnológica enterprise</li>
+                <li>Facilitar el contacto entre clientes potenciales y Expert Engineers</li>
+                <li>Mostrar casos de éxito y capacidades técnicas de la empresa</li>
+            </ul>
+            
+            <h3>3. Propiedad Intelectual</h3>
+            <p>Todo el contenido de este sitio web, incluyendo pero no limitado a textos, gráficos, logotipos, íconos, imágenes, diseño y código fuente, es propiedad exclusiva de Expert Engineers o sus licenciantes y está protegido por las leyes de propiedad intelectual de México y tratados internacionales.</p>
+            <p>Queda prohibida la reproducción, distribución o uso comercial del contenido sin autorización expresa por escrito.</p>
+            
+            <h3>4. Información del Sitio</h3>
+            <p>Expert Engineers se esfuerza por mantener la información del sitio actualizada y precisa. Sin embargo, no garantizamos la exactitud, integridad o actualidad de toda la información proporcionada. El contenido se proporciona "tal cual" y puede estar sujeto a cambios sin previo aviso.</p>
+            
+            <h3>5. Limitación de Responsabilidad</h3>
+            <p>Expert Engineers no será responsable por:</p>
+            <ul>
+                <li>Interrupciones o errores en el funcionamiento del sitio web</li>
+                <li>Pérdida de datos o información transmitida a través del sitio</li>
+                <li>Daños directos o indirectos derivados del uso o imposibilidad de uso del sitio</li>
+                <li>Contenido de sitios web de terceros enlazados desde nuestro sitio</li>
+            </ul>
+            
+            <h3>6. Enlaces a Terceros</h3>
+            <p>Este sitio puede contener enlaces a sitios web de terceros (redes sociales, partners tecnológicos). Expert Engineers no controla ni es responsable del contenido de estos sitios externos. La inclusión de enlaces no implica aprobación o respaldo de los sitios enlazados.</p>
+            
+            <h3>7. Servicios Profesionales</h3>
+            <p>Los servicios técnicos de migración y renovación tecnológica ofrecidos por Expert Engineers están sujetos a términos y condiciones específicos que se establecerán en contratos individuales. Este sitio web es únicamente informativo y no constituye una oferta vinculante de servicios.</p>
+            
+            <h3>8. Ley Aplicable y Jurisdicción</h3>
+            <p>Estos Términos de Servicio se rigen por las leyes de los Estados Unidos Mexicanos. Cualquier controversia derivada del uso de este sitio web se someterá a la jurisdicción de los tribunales competentes en Querétaro, México.</p>
+            
+            <h3>9. Modificaciones</h3>
+            <p>Expert Engineers se reserva el derecho de modificar estos términos en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación en el sitio web. El uso continuado del sitio después de cualquier cambio constituye la aceptación de los nuevos términos.</p>
+            
+            <h3>10. Contacto</h3>
+            <p>Para preguntas o comentarios sobre estos Términos de Servicio, puede contactarnos en:</p>
+            <p><strong>Email:</strong> hipolito.almaraz@eei-migrationservices.com.mx<br>
+            <strong>Teléfono:</strong> +52 (561) 924-8130<br>
+            <strong>Ubicación:</strong> Querétaro, Qro., México</p>
+            
+            <p class="modal-note"><strong>Nota Legal:</strong> Este documento tiene fines informativos generales. Para acuerdos comerciales específicos o proyectos de migración tecnológica, se establecerán contratos formales con términos detallados.</p>
+        </div>
     </div>
 
     <!-- Theme Toggle -->
@@ -1701,14 +1942,24 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 Expert Engineers in Migration Services SAS de CV. Todos los derechos reservados.</p>
                 <div>
-                    <a href="#">Política de Privacidad</a> • 
-                    <a href="#">Términos de Servicio</a>
+                    <a href="javascript:void(0);" onclick="document.getElementById('modalPrivacidad').classList.add('active'); document.body.style.overflow='hidden';">Política de Privacidad</a> • 
+                    <a href="javascript:void(0);" onclick="document.getElementById('modalTerminos').classList.add('active'); document.body.style.overflow='hidden';">Términos de Servicio</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Close modals with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(function(modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+
         // Theme Management System
         const themeManager = {
             THEME_KEY: 'eei-theme-preference',
@@ -1985,6 +2236,10 @@
             'color: #0066ff; font-size: 16px; font-weight: bold;');
         console.log('%c💡 Modos: Dark, Light y Auto (detecta sistema)', 
             'color: #00d4ff; font-size: 14px;');
+        
+        console.log('%c📄 Modales cargados correctamente', 
+            'color: #00ff88; font-size: 14px;');
     </script>
 </body>
 </html>
+
